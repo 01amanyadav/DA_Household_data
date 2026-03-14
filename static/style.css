@@ -67,7 +67,7 @@ body {
     position: relative;
     width: 100%;
     /* 16:9 aspect ratio */
-    padding-top: 56.25%;
+    
     overflow: hidden;
     border-radius: 0.75rem;
     background: #f3f4f6;
