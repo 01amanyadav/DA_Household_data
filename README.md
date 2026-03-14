@@ -6,3 +6,4 @@ storyboard_steps: overview, regional trends, price analysis
 performance_metrics: load_time < 2s
 performance_metrics: filter_response < 0.5s
 performance_metrics: render_time < 1s
+deployment_config: heroku, aws
