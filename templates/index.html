@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Housing Data Visualization Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <!-- Tableau JS API -->
+    <script type="text/javascript"
+        src="https://public.tableau.com/javascripts/api/tableau.viz.v1.js"></script>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="header">
+            <h1>Housing Data Visualization Dashboard</h1>
+            <p class="subtitle">
+                This dashboard provides interactive visual insights into housing data, allowing you to
+                explore trends, filter by different dimensions, and better understand patterns in the housing market.
+            </p>
+        </header>
+
+        <main>
+            <section class="card">
+                <div class="card-header">
+                    <h2>Interactive Tableau Dashboard</h2>
+                    <p>Use the filters and controls inside the visualization to explore the data.</p>
+                </div>
+                <div class="viz-container">
+                    <div id="tableauViz"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="text/javascript">
+        // Replace this with your actual Tableau Public view URL
+        const vizUrl = "PASTE_YOUR_TABLEAU_PUBLIC_LINK_HERE";
+
+        let viz;
+
+        function initViz() {
+            const containerDiv = document.getElementById("tableauViz");
+
+            if (!containerDiv) return;
+
+            const options = {
+                width: "100%",
+                height: "100%",
+                hideTabs: true,
+                onFirstInteractive: function () {
+                    console.log("Tableau viz is interactive.");
+                },
+            };
+
+            // Destroy existing viz if it exists (for hot reloads / resizing)
+            if (viz) {
+                viz.dispose();
+            }
+
+            viz = new tableau.Viz(containerDiv, vizUrl, options);
+        }
+
+        // Initialize when DOM content is loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            initViz();
+        });
+
+        // Optional: reinitialize on window resize for responsiveness
+        window.addEventListener("resize", function () {
+            if (viz) {
+                // Let CSS handle most responsiveness; full re-create is optional.
+                // Uncomment the next line if you want to fully recreate on resize:
+                // initViz();
+            }
+        });
+    </script>
+</body>
+
+</html>
